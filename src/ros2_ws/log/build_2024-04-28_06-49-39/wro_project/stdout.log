@@ -1,0 +1,31 @@
+running egg_info
+creating ../../build/wro_project/wro_project.egg-info
+writing ../../build/wro_project/wro_project.egg-info/PKG-INFO
+writing dependency_links to ../../build/wro_project/wro_project.egg-info/dependency_links.txt
+writing entry points to ../../build/wro_project/wro_project.egg-info/entry_points.txt
+writing requirements to ../../build/wro_project/wro_project.egg-info/requires.txt
+writing top-level names to ../../build/wro_project/wro_project.egg-info/top_level.txt
+writing manifest file '../../build/wro_project/wro_project.egg-info/SOURCES.txt'
+reading manifest file '../../build/wro_project/wro_project.egg-info/SOURCES.txt'
+writing manifest file '../../build/wro_project/wro_project.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/build/wro_project/build
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/build/wro_project/build/lib
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/build/wro_project/build/lib/wro_project
+copying wro_project/__init__.py -> /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/build/wro_project/build/lib/wro_project
+running install
+running install_lib
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/lib/python3.10/site-packages/wro_project
+copying /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/build/wro_project/build/lib/wro_project/__init__.py -> /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/lib/python3.10/site-packages/wro_project
+byte-compiling /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/lib/python3.10/site-packages/wro_project/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/share/ament_index
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/share/ament_index/resource_index
+creating /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/share/ament_index/resource_index/packages
+copying resource/wro_project -> /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/share/ament_index/resource_index/packages
+copying package.xml -> /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/share/wro_project
+running install_egg_info
+Copying ../../build/wro_project/wro_project.egg-info to /home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/install/wro_project/lib/python3.10/site-packages/wro_project-0.0.0-py3.10.egg-info
+running install_scripts
+writing list of installed files to '/home/haqq/Documents/robotics/wro/pathfinders/src/ros2_ws/build/wro_project/install.log'

@@ -44,10 +44,22 @@
             </plane>
           </geometry>
           <material>
-            <ambient>0.5 0.5 0.5 1</ambient>
-            <diffuse>0.8 0.8 0.8 1</diffuse>
+            <!-- <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
             <specular>1 1 1 1</specular>
-            <emissive>0.8 0.8 0.8 1</emissive>
+            <emissive>0.6 0.6 0.6 1</emissive> -->
+
+            <ambient>1 1 1 1</ambient>
+            <diffuse>1 1 1 1</diffuse>
+            <specular>0.1 0.1 0.1 1</specular>
+            <emissive>0 0 0 1</emissive>
+
+            <pbr>
+              <metal>
+                <albedo_map>model://wro_ground/materials/textures/wro_mat.png</albedo_map>
+              </metal>
+            </pbr>
+
           </material>
         </visual>
         <pose>0 0 0 0 -0 0</pose>
@@ -447,7 +459,7 @@
     <light name='sun' type='directional'>
       <pose>0 0 10 0 -0 0</pose>
       <cast_shadows>true</cast_shadows>
-      <intensity>1</intensity>
+      <intensity>8</intensity>
       <direction>-0.5 0.1 -0.9</direction>
       <diffuse>0.8 0.8 0.8 1</diffuse>
       <specular>0.2 0.2 0.2 1</specular>
