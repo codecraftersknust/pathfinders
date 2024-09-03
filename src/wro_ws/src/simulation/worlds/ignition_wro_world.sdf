@@ -1,3 +1,4 @@
+<?xml version="1.0"?> 
 <sdf version='1.7'>
   <world name='wro_world'>
     <physics name='1ms' type='ignored'>
@@ -456,6 +457,7 @@
       <static>false</static>
       <self_collide>false</self_collide>
     </model>
+
     <light name='sun' type='directional'>
       <pose>0 0 10 0 -0 0</pose>
       <cast_shadows>true</cast_shadows>
