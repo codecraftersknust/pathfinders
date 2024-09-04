@@ -23,7 +23,7 @@
           <geometry> 
             <box size="2 1 0.4"/> 
           </geometry> 
-          <material name="green" />
+          <material name="orange" />
         </visual>
 
         <collision> 
@@ -60,7 +60,7 @@
               </ode>
             </friction>
           </surface>
-        <material name="white"/> 
+        <material name="black"/> 
       </visual> 		
 
       <xacro:inertial_cylinder mass="1.0" length="0.1" radius="0.2">
@@ -104,7 +104,7 @@
         <geometry>
           <cylinder length="0.1" radius="0.2"/>
         </geometry>
-        <material name="white"/>
+        <material name="black"/>
       </visual>
 
       <xacro:inertial_cylinder mass="1.0" length="0.1" radius="0.2">
@@ -148,7 +148,7 @@
         <geometry>
           <cylinder length="0.1" radius="0.2"/>
         </geometry>
-        <material name="white"/>
+        <material name="black"/>
       </visual>
 
       <xacro:inertial_cylinder mass="1.0" length="0.1" radius="0.2">
@@ -183,7 +183,7 @@
         <geometry>
           <cylinder length="0.1" radius="0.2"/>
         </geometry>
-        <material name="white"/>
+        <material name="black"/>
       </visual>
 
       <xacro:inertial_cylinder mass="1.0" length="0.1" radius="0.2">
@@ -209,7 +209,7 @@
         <geometry>
           <cylinder radius="0.04" length="0.2"/>
         </geometry>
-        <material name="white"/>
+        <material name="black"/>
       </visual>
 
       <xacro:inertial_cylinder mass="0.4" length="0.2" radius="0.04">
@@ -230,7 +230,7 @@
         <geometry>
           <cylinder radius="0.04" length="0.2"/>
         </geometry>
-        <material name="white"/>
+        <material name="black"/>
       </visual>
 
       <xacro:inertial_cylinder mass="0.4" length="0.2" radius="0.04">
