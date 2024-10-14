@@ -13,7 +13,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    package_name='simulation' 
+    package_name='robot_description' 
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
@@ -32,34 +32,12 @@ def generate_launch_description():
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'my_bot'],
                         output='screen')
-    
-    # twist_mux_params = os.path.join(get_package_share_directory(package_name),
-    #                                 'config', 'twist_mux.yaml')
-    # twist_mux = Node(
-    #     package="twist_mux",
-    #     executable="twist_mux",
-    #     parameters=[twist_mux_params, {"use_sim_time": True}],
-    #     remappings=[("/cmd_vel_out", "/diff_cont/cmd_vel_unstamped")],
-    # )
-    
-    robot_localization_node = Node(
-       package='robot_localization',
-       executable='ekf_node',
-       name='ekf_filter_node',
-       output='screen',
-       parameters=[os.path.join(get_package_share_directory(package_name), 'config', 'ekf.yaml'), 
-                   {'use_sim_time': True}
-                    ]
-    )
 
-    
 
 
     # Launch them all!
     return LaunchDescription([
         rsp,
-        # twist_mux,
         gazebo,
         spawn_entity,
-        robot_localization_node,
     ])
