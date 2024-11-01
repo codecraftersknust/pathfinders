@@ -32,12 +32,25 @@ def generate_launch_description():
                         arguments=['-topic', 'robot_description',
                                    '-entity', 'my_bot'],
                         output='screen')
+    
+    ack_steer_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["ack_cont"],
+    )
+    
+    joint_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_broad"],
+    )
 
 
 
-    # Launch them all!
     return LaunchDescription([
         rsp,
         gazebo,
         spawn_entity,
+        ack_steer_spawner,
+        joint_broadcaster_spawner,
     ])

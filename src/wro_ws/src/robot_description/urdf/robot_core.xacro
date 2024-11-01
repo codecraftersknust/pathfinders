@@ -17,16 +17,6 @@
     <xacro:property name="wheel_zoff" value="0.03"/>
     <xacro:property name="wheel_xoff" value="0.09"/>
 
-
-    <link name="base_footprint" />
-
-    <joint name="base_joint" type="fixed">
-        <parent link="base_footprint" />
-        <child link="base_link" />
-        <origin xyz="0 0 ${(wheel_radius+wheel_zoff)}" rpy="0 0 0" />
-    </joint>
-
-    <!-- Chassis -->
     <link name="base_link">
         <visual>
             <origin xyz="0 0 0" rpy="0 0 0"/>

@@ -21,4 +21,9 @@
         <color rgba="1 0.3 0.1 1"/>
     </material>
 
+    <material name="invisible">
+        <color rgba="0.0 0.0 0.0 0.0"/>
+    </material>
+
+
 </robot>

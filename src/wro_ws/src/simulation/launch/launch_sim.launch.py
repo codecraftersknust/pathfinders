@@ -33,6 +33,18 @@ def generate_launch_description():
                                    '-entity', 'my_bot'],
                         output='screen')
     
+    ack_steer_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["ack_cont"],
+    )
+    
+    joint_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_broad"],
+    )
+    
     # twist_mux_params = os.path.join(get_package_share_directory(package_name),
     #                                 'config', 'twist_mux.yaml')
     # twist_mux = Node(
@@ -42,15 +54,15 @@ def generate_launch_description():
     #     remappings=[("/cmd_vel_out", "/diff_cont/cmd_vel_unstamped")],
     # )
     
-    robot_localization_node = Node(
-       package='robot_localization',
-       executable='ekf_node',
-       name='ekf_filter_node',
-       output='screen',
-       parameters=[os.path.join(get_package_share_directory(package_name), 'config', 'ekf.yaml'), 
-                   {'use_sim_time': True}
-                    ]
-    )
+    # robot_localization_node = Node(
+    #    package='robot_localization',
+    #    executable='ekf_node',
+    #    name='ekf_filter_node',
+    #    output='screen',
+    #    parameters=[os.path.join(get_package_share_directory(package_name), 'config', 'ekf.yaml'), 
+    #                {'use_sim_time': True}
+    #                 ]
+    # )
 
     
 
@@ -61,5 +73,7 @@ def generate_launch_description():
         # twist_mux,
         gazebo,
         spawn_entity,
-        robot_localization_node,
+        ack_steer_spawner,
+        joint_broadcaster_spawner,
+        # robot_localization_node,
     ])

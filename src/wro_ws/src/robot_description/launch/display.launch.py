@@ -21,13 +21,13 @@ def generate_launch_description():
         arguments=[default_model_path]
     )
   
-    # rviz_node = launch_ros.actions.Node(
-    #     package='rviz2',
-    #     executable='rviz2',
-    #     name='rviz2',
-    #     output='screen',
-    #     arguments=['-d', LaunchConfiguration('rvizconfig')],
-    # )
+    rviz_node = launch_ros.actions.Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', LaunchConfiguration('rvizconfig')],
+    )
     
     # spawn_entity = launch_ros.actions.Node(
     #     package='gazebo_ros',
@@ -35,16 +35,30 @@ def generate_launch_description():
     #     arguments=['-entity', 'robot', '-topic', 'robot_description'],
     #     output='screen'
     # )
+    
+    # ack_steer_spawner = launch_ros.actions.Node(
+    #     package="controller_manager",
+    #     executable="spawner",
+    #     arguments=["ack_cont"],
+    # )
+    
+    # joint_broadcaster_spawner = launch_ros.actions.Node(
+    #     package="controller_manager",
+    #     executable="spawner",
+    #     arguments=["joint_broad"],
+    # )
 
     return launch.LaunchDescription([
         launch.actions.DeclareLaunchArgument(name='model', default_value=default_model_path,
                                             description='Absolute path to robot urdf file'),
-        # launch.actions.DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path,
-        #                                     description='Absolute path to rviz config file'),
+        launch.actions.DeclareLaunchArgument(name='rvizconfig', default_value=default_rviz_config_path,
+                                            description='Absolute path to rviz config file'),
         # launch.actions.ExecuteProcess(cmd=['gazebo', '--verbose', '-s', 'libgazebo_ros_init.so', '-s', 'libgazebo_ros_factory.so'], 
         #                               output='screen'),
         joint_state_publisher_node,
         robot_state_publisher_node,
         # spawn_entity,
-        # rviz_node
+        rviz_node,
+        # ack_steer_spawner,
+        # joint_broadcaster_spawner,
     ])
