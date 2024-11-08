@@ -162,6 +162,9 @@ std::vector<hardware_interface::StateInterface> CarlikeBotSystemHardware::export
 
     state_interfaces.emplace_back(hardware_interface::StateInterface(
       traction_.name, hardware_interface::HW_IF_VELOCITY, &traction_.vel));
+    
+    RCLCPP_INFO(
+        rclcpp::get_logger("CarlikeBotSystemHardware"), "State interfaces exported");
 
   return state_interfaces;
 }
@@ -178,6 +181,9 @@ CarlikeBotSystemHardware::export_command_interfaces()
   command_interfaces.emplace_back(hardware_interface::CommandInterface(
     traction_.name, hardware_interface::HW_IF_VELOCITY,
     &traction_.cmd));
+
+  RCLCPP_INFO(
+        rclcpp::get_logger("CarlikeBotSystemHardware"), "Command interfaces exported");
 
   return command_interfaces;
 }
@@ -265,6 +271,7 @@ hardware_interface::return_type bicdrive_arduino ::CarlikeBotSystemHardware::wri
   double min_velocity = -1000.0; 
   double clamped_velocity = std::max(min_velocity, std::min(traction_.cmd, max_velocity));
 
+  
   comms_.set_steering_motor_value(clamped_steering_angle);
   comms_.set_drive_motor_value(clamped_velocity);
 
