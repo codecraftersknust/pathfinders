@@ -1,22 +1,24 @@
-Electromechanical diagrams
-====
+# Electromechanical diagrams
 
 ## Schematic Diagrams
 
 The following diagrams illustrate the connections between all the electromechanical components and the vehicle's motors.
 
 ### **System Schematic**
-- Includes the Jetson Orin Nano, Arduino Nano, motor driver (L298N), servo driver (PCA9685), sensors (RPLidar, Intel D435iF Camera), and power supply components.
+
+- Includes the Jetson Orin Nano, Arduino Nano, ESC, sensors (RPLidar, Intel D435i Camera), and power supply components.
 
 ### **Power Management**
-- Displays how the 11.1V LiPo battery connects through the step-down buck converter to power the motor, drivers, and sensors.
+
+- Displays how the 11.1V LiPo & 6V NiMH batteries connect to the ESC to power the motors, controllers and sensors.
 
 ### **Control and Communication**
-- Illustrates the communication between the Jetson Orin Nano and Arduino Nano, and the motor drivers.
+
+- Illustrates the communication between the Jetson Orin Nano and Arduino Nano, and the Driving Motor ESC together with the power distribution.
 
 ![Schematic Diagram](/schemes/diagrams/circuit.png)
 
-> **Note:** All schematic diagrams can be found in the `/diagrams` folder in PNG, JPEG, and PDF formats.
+> **Note:** All schematic diagrams can be found in the `/diagrams` folder in PNG format.
 
 ---
 
@@ -27,9 +29,9 @@ The following diagrams illustrate the connections between all the electromechani
    - Install the custom base plate and mount all necessary components.
 
 2. **Component Connections**:
-   - Wire the driving motors to the L298N motor driver and the steering servo to the PCA9685 driver.
-   - Connect the RPLidar, Arduino nano and Intel D435iF to the Jetson Orin Nano via USB.
-   - Ensure all components are powered correctly via the DC-DC buck converters.
+   - Wire the driving motors to the ESC and the steering servo to the Arduino Nano.
+   - Connect the RPLidar, Arduino nano and Intel D435i to the Jetson Orin Nano via USB.
+   - Ensure all components are powered correctly.
 
 3. **Power On and Program Start**:
    - Use the installed switches to power the vehicle and initiate autonomous operation.
