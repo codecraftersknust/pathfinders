@@ -257,12 +257,12 @@ hardware_interface::return_type bicdrive_arduino ::CarlikeBotSystemHardware::wri
     return hardware_interface::return_type::ERROR;
   }
 
-  double max_steering_angle = 45.0; 
-  double min_steering_angle = -45.0; 
+  double max_steering_angle = 180.0; 
+  double min_steering_angle = 0.0; 
   double clamped_steering_angle = std::max(min_steering_angle, std::min(steering_.pos, max_steering_angle));
 
-  double max_velocity = 100.0;
-  double min_velocity = -100.0; 
+  double max_velocity = 1000.0;
+  double min_velocity = -1000.0; 
   double clamped_velocity = std::max(min_velocity, std::min(traction_.cmd, max_velocity));
 
   comms_.set_steering_motor_value(clamped_steering_angle);

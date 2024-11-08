@@ -87,14 +87,14 @@ public:
   void set_drive_motor_value(int val)
   {
     std::stringstream ss;
-    ss << "m " << val << "\r";
+    ss << "o " << val << "\r";
     send_msg(ss.str());
   }
 
   void set_steering_motor_value(int val)
   {
     std::stringstream ss;
-    ss << "s " << val << "\r";
+    ss << "s 0 " << val << "\r";
     send_msg(ss.str());
   }
 
