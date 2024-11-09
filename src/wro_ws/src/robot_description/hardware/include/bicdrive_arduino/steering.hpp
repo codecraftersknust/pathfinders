@@ -8,7 +8,7 @@ class Steering
 {
 public:
     std::string name = "";
-    double pos = 0.0;
+    double pos = M_PI_2;
 
     Steering() = default;
 
