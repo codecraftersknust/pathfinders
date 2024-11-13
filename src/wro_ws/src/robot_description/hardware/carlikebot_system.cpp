@@ -129,7 +129,7 @@ hardware_interface::CallbackReturn CarlikeBotSystemHardware::on_init(
         return hardware_interface::CallbackReturn::ERROR;
       }
 
-      if (joint.state_interfaces.size() != 1)
+      if (joint.state_interfaces.size() != 2)
       {
         RCLCPP_FATAL(
           rclcpp::get_logger("CarlikeBotSystemHardware"),
@@ -143,7 +143,15 @@ hardware_interface::CallbackReturn CarlikeBotSystemHardware::on_init(
         RCLCPP_FATAL(
           rclcpp::get_logger("CarlikeBotSystemHardware"),
           "Joint '%s' has %s state interface. '%s' expected.", joint.name.c_str(),
-          joint.state_interfaces[1].name.c_str(), hardware_interface::HW_IF_VELOCITY);
+          joint.state_interfaces[0].name.c_str(), hardware_interface::HW_IF_VELOCITY);
+        return hardware_interface::CallbackReturn::ERROR;
+      }
+
+      if (joint.state_interfaces[1].name != hardware_interface::HW_IF_POSITION)
+      {
+        RCLCPP_FATAL(
+          rclcpp::get_logger("CarlikeBotSystemHardware"), "Joint '%s' has %s state interface. '%s' expected.", joint.name.c_str(),
+          joint.state_interfaces[1].name.c_str(), hardware_interface::HW_IF_POSITION);
         return hardware_interface::CallbackReturn::ERROR;
       }
 
@@ -162,6 +170,9 @@ std::vector<hardware_interface::StateInterface> CarlikeBotSystemHardware::export
 
     state_interfaces.emplace_back(hardware_interface::StateInterface(
       traction_.name, hardware_interface::HW_IF_VELOCITY, &traction_.vel));
+
+    state_interfaces.emplace_back(hardware_interface::StateInterface(
+      traction_.name, hardware_interface::HW_IF_POSITION, &traction_.pos));
     
     RCLCPP_INFO(
         rclcpp::get_logger("CarlikeBotSystemHardware"), "State interfaces exported");
@@ -251,6 +262,7 @@ hardware_interface::return_type CarlikeBotSystemHardware::read(
   comms_.read_encoder_value(num);
   steering_.pos = 0.0;
   traction_.vel = 0.0;
+  traction_.pos = 0.0;
 
   return hardware_interface::return_type::OK;
 }
@@ -264,7 +276,7 @@ hardware_interface::return_type bicdrive_arduino ::CarlikeBotSystemHardware::wri
   }
   steering_.pos = M_PI_2 + steering_.pos;
   steering_.pos = steering_.pos * (180.0 / M_PI);
-  std::cout << "Steering pos is " << steering_.pos << std::endl;
+  // std::cout << "Steering pos is " << steering_.pos << std::endl;
   double max_steering_angle = 180.0; 
   double min_steering_angle = -180.0; 
   double clamped_steering_angle = std::max(min_steering_angle, std::min(steering_.pos, max_steering_angle));
@@ -274,7 +286,7 @@ hardware_interface::return_type bicdrive_arduino ::CarlikeBotSystemHardware::wri
   double clamped_velocity = std::max(min_velocity, std::min(traction_.cmd, max_velocity));
 
   
-  comms_.set_steering_motor_value(steering_.pos);
+  comms_.set_steering_motor_value(steering_.pos); // change this to clamped_steer
   comms_.set_drive_motor_value(clamped_velocity);
 
   return hardware_interface::return_type::OK;

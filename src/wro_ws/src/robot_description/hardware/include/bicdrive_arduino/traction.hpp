@@ -12,6 +12,7 @@ class Traction
     std::string name = "";
     double cmd = 0.0;
     double vel = 0.0;
+    double pos = 0.0;
 
     Traction() = default;
 

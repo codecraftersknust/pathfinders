@@ -60,7 +60,7 @@
       <parent link="base_link"/>
       <child link="virtual_rear_wheel"/>
       <origin xyz="-${wheelbase/2} 0 -${base_height/2}" rpy="0 0 ${PI/2}"/>
-      <axis xyz="1 0 0"/>
+      <axis xyz="1 0 0" rpy="0 0 0"/>
       <limit effort="100.0" velocity="100.0"/>
       <dynamics damping="0.2"/>
     </joint>
@@ -98,7 +98,7 @@
       <parent link="base_link"/>
       <child link="rear_right_wheel"/>
       <origin xyz="-${wheelbase/2} ${base_width/2} -${base_height/2}" rpy="0 0 ${PI/2}"/>
-      <axis xyz="1 0 0"/>
+      <axis xyz="1 0 0" rpy="0 0 0"/>
       <limit effort="100.0" velocity="100.0"/>
       <dynamics damping="0.2"/>
       <mimic joint="virtual_rear_wheel_joint" multiplier="1.0" offset="0.0"/>
@@ -136,7 +136,7 @@
       <parent link="base_link" />
       <child link="rear_left_wheel" />
       <origin xyz="-${wheelbase/2} -${base_width/2} -${base_height/2}" rpy="0 0 ${PI/2}"/>
-      <axis xyz="1 0 0"/>
+      <axis xyz="1 0 0" rpy="0 0 0" />
       <limit effort="100.0" velocity="100.0"/>
       <dynamics damping="0.2"/>
       <mimic joint="virtual_rear_wheel_joint" multiplier="1.0" offset="0.0"/>
@@ -161,7 +161,7 @@
       <child link="virtual_front_wheel"/>
       <origin xyz="${wheelbase/2} 0 -${base_height/2}" rpy="0 0 ${PI/2}"/>
       <axis xyz="0 0 1"/>
-      <limit lower="-0.4" upper="0.4" effort="100.0" velocity="0.0"/>
+      <limit lower="-0.7853" upper="0.7853" effort="100.0" velocity="100.0"/>
       <dynamics damping="0.2"/>
     </joint>
 
@@ -200,7 +200,7 @@
       <child link="front_right_wheel" />
       <origin xyz="${wheelbase/2} ${base_width/2} -${base_height/2}" rpy="0 0 ${PI/2}"/>
       <axis xyz="0 0 1"/>
-      <limit lower="-0.4" upper="0.4" effort="100.0" velocity="0.0"/>
+      <limit lower="-0.7853" upper="0.7853" effort="100.0" velocity="100.0"/>
       <dynamics damping="0.2"/>
       <mimic joint="virtual_front_wheel_joint" multiplier="1.0" offset="0.0"/>
     </joint>
@@ -236,7 +236,7 @@
       <child link="front_left_wheel" />
       <origin xyz="${wheelbase/2} -${base_width/2} -${base_height/2}" rpy="0 0 ${PI/2}"/>
       <axis xyz="0 0 1"/>
-      <limit lower="-0.4" upper="0.4" effort="100.0" velocity="0.0"/>
+      <limit lower="-0.7853" upper="0.7853" effort="100.0" velocity="100.0"/>
       <dynamics damping="0.2"/>
       <mimic joint="virtual_front_wheel_joint" multiplier="1.0" offset="0.0"/>
     </joint>

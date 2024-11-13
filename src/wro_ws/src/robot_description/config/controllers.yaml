@@ -45,4 +45,4 @@ bic_cont:
     rear_wheel_radius: 0.0215
     twist_covariance_diagonal: [0.0, 7.0, 14.0, 21.0, 28.0, 35.0]
     pose_covariance_diagonal: [0.0, 7.0, 14.0, 21.0, 28.0, 35.0]
-    use_stamped_vel: false
+    use_stamped_vel: false # change to true when using navigation stack
