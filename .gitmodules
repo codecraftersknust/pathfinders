@@ -1,0 +1,6 @@
+[submodule "src/wro_ws/src/wro_ws/src/sensors/rplidar_ros"]
+	path = src/wro_ws/src/wro_ws/src/sensors/rplidar_ros
+	url = git@github.com:Slamtec/rplidar_ros.git
+[submodule "src/wro_ws/src/sensors/rplidar_ros"]
+	path = src/wro_ws/src/sensors/rplidar_ros
+	url = git@github.com:Slamtec/rplidar_ros.git
