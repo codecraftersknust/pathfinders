@@ -74,7 +74,7 @@ def generate_launch_description():
     
     laser_odometry = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory('rf2o_laser_odometry'), 'launch', 'laser_odometry.launch.py')]),
+                    get_package_share_directory('rf2o_laser_odometry'), 'launch', 'rf2o_laser_odometry.launch.py')]),
              )
 
 
