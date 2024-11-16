@@ -275,18 +275,25 @@ hardware_interface::return_type bicdrive_arduino ::CarlikeBotSystemHardware::wri
     return hardware_interface::return_type::ERROR;
   }
   steering_.pos = M_PI_2 + steering_.pos;
-  steering_.pos = steering_.pos * (180.0 / M_PI);
+  double steering_pos_deg = steering_.pos * (180.0 / M_PI);
   // std::cout << "Steering pos is " << steering_.pos << std::endl;
   double max_steering_angle = 180.0; 
   double min_steering_angle = -180.0; 
-  double clamped_steering_angle = std::max(min_steering_angle, std::min(steering_.pos, max_steering_angle));
+  double clamped_steering_angle = std::max(min_steering_angle, std::min(steering_pos_deg, max_steering_angle));
+  if (steering_.pos < -10.0) {
+    steering_pos_deg = -180.0;
+  } 
+  else if (steering_.pos > 10.0) {
+    steering_pos_deg = 180.0;
+  }
 
   double max_velocity = 1000.0;
-  double min_velocity = -1000.0; 
-  double clamped_velocity = std::max(min_velocity, std::min(traction_.cmd, max_velocity));
+  double min_velocity = -1000.0;
 
+  double clamped_velocity = std::max(min_velocity, std::min(traction_.cmd, max_velocity));
+  clamped_velocity = clamped_velocity / 3; 
   
-  comms_.set_steering_motor_value(steering_.pos); // change this to clamped_steer
+  comms_.set_steering_motor_value(steering_pos_deg); // change this to clamped_steer
   comms_.set_drive_motor_value(clamped_velocity);
 
   return hardware_interface::return_type::OK;
