@@ -1,0 +1,11 @@
+twist_mux:
+  ros__parameters:
+    topics:
+      navigation:
+        topic: /bic_cont/reference_unstamped
+        timeout: 0.5
+        priority: 10
+      keyboard:
+        topic: /bic_cont/reference_unstamped
+        timeout: 0.5
+        priority: 100 

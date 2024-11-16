@@ -47,6 +47,15 @@ def generate_launch_description():
         output="both",
         parameters=[robot_description],
     )
+    
+    twist_mux_params = os.path.join(get_package_share_directory('robot_description'), 'config', 'twist_mux.yaml')
+    twist_mux = Node(
+        package='twist_mux',
+        executable='twist_mux',
+        parameters=[twist_mux_params],
+        remappings=[('/cmd_vel_out', '/bic_cont/reference_unstamped')],
+    )
+
 
     joint_state_broadcaster_spawner = Node(
         package="controller_manager",
@@ -77,10 +86,10 @@ def generate_launch_description():
                     get_package_share_directory('rf2o_laser_odometry'), 'launch', 'rf2o_laser_odometry.launch.py')]),
              )
 
-
     nodes = [
         control_node,
         robot_state_pub_node,
+        twist_mux,
         joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
         lidar,
