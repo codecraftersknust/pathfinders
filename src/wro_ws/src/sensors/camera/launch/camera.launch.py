@@ -13,21 +13,21 @@ from launch.substitutions import LaunchConfiguration, PythonExpression
 from launch_ros.actions import Node
 
 def generate_launch_description():
-
+    camera = IncludeLaunchDescription(
+        PythonLaunchDescriptionSource([
+            os.path.join(get_package_share_directory('realsense2_camera'), 'launch', 'rs_launch.py')]),
+            launch_arguments = {
+                'enable_rgbd': 'true',
+                'enable_sync': 'true',
+                'align_depth.enable': 'true',
+                'enable_color': 'true',
+                'enable_depth': 'true',
+                'enable_accel': 'true',
+                'enable_gyro': 'true',
+                'unite_imu_method': '1'
+            }.items()
+    )
+    
     return LaunchDescription([
-
-            Node(
-                package='rf2o_laser_odometry',
-                executable='rf2o_laser_odometry_node',
-                name='rf2o_laser_odometry',
-                output='screen',
-                parameters=[{
-                    'laser_scan_topic' : '/scan',
-                    'odom_topic' : '/odom_rf2o',
-                    'publish_tf' : False,
-                    'base_frame_id' : 'base_link',
-                    'odom_frame_id' : 'odom',
-                    'init_pose_from_topic' : '',
-                    'freq' : 20.0}],
-            ),
+        camera,
     ])

@@ -8,7 +8,6 @@
             <param name="rear_wheel_name">virtual_rear_wheel_joint</param>
             <param name="loop_rate">30</param>
             <param name="device">/dev/serial/by-id/usb-1a86_USB2.0-Ser_-if00-port0</param>
-            <!-- <param name="device">/dev/serial/by-path/pci-0000:00:14.0-usb-0:4:1.0-port0</param> -->
             <param name="baud_rate">9600</param>
             <param name="timeout_ms">1000</param>
         </hardware>

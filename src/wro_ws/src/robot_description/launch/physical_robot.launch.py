@@ -80,11 +80,22 @@ def generate_launch_description():
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('rplidar'), 'launch', 'rplidar_a1_launch.py')]),
              )
+
+    camera = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('camera'), 'launch', 'camera.launch.py')]),
+            )
     
     laser_odometry = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory('rf2o_laser_odometry'), 'launch', 'rf2o_laser_odometry.launch.py')]),
              )
+    
+    sensor_fusion = IncludeLaunchDescription(
+                PythonLaunchDescriptionSource([os.path.join(
+                    get_package_share_directory('sensor_fusion'), 'launch', 'ekf.launch.py')]),
+    )
+    
 
     nodes = [
         control_node,
@@ -93,7 +104,9 @@ def generate_launch_description():
         joint_state_broadcaster_spawner,
         delay_robot_controller_spawner_after_joint_state_broadcaster_spawner,
         lidar,
-        laser_odometry
+        camera,
+        laser_odometry,
+        sensor_fusion,
     ]
 
     return LaunchDescription(nodes)
