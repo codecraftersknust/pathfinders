@@ -44,7 +44,7 @@ bt_navigator:
     use_sim_time: False
     global_frame: map
     robot_base_frame: base_link
-    odom_topic: /odom_rf2o
+    odom_topic: /odometry/filtered
     bt_loop_duration: 10
     default_server_timeout: 20
     wait_for_service_timeout: 1000
@@ -128,18 +128,18 @@ controller_server:
     goal_checker:
       plugin: "nav2_controller::SimpleGoalChecker"
       xy_goal_tolerance: 0.5
-      yaw_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.01
       stateful: True
     FollowPath:
       plugin: "nav2_regulated_pure_pursuit_controller::RegulatedPurePursuitController"
-      desired_linear_vel: 8.0
-      lookahead_dist: 0.5
+      desired_linear_vel: 10.0
+      lookahead_dist: 0.8
       min_lookahead_dist: 0.4
       max_lookahead_dist: 0.7
       lookahead_time: 1.5
       rotate_to_heading_angular_vel: 2.2
       transform_tolerance: 0.3
-      use_velocity_scaled_lookahead_dist: true
+      use_velocity_scaled_lookahead_dist: false
       min_approach_linear_velocity: 3.0
       approach_velocity_scaling_dist: 0.1
       use_collision_detection: false
@@ -351,7 +351,7 @@ velocity_smoother:
     min_velocity: [-3.2, 0.0, -10.0]
     max_accel: [2.5, 0.0, 3.2]
     max_decel: [-2.5, 0.0, -3.2]
-    odom_topic: "odom_rf2o"
+    odom_topic: "odometry/filtered"
     odom_duration: 0.1
     deadband_velocity: [0.0, 0.0, 0.0]
     velocity_timeout: 1.0
